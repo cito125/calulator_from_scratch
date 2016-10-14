@@ -2,6 +2,7 @@ package nyc.c4q;
 
 import sun.jvm.hotspot.types.basic.BasicNarrowOopField;
 
+import java.math.BigDecimal;
 import java.util.DoubleSummaryStatistics;
 import java.util.function.DoubleBinaryOperator;
 import java.util.regex.Matcher;
@@ -11,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-//        Calculator cal = new Calculator();
+        Calculator cal = new Calculator();
 //        System.out.println(makeNice("4+4*2*(3)2(6)"));
 //        System.out.println(calculate(makeNice("4+4*2*(3)2(6)")));
 //        System.out.println(calculate(makeNice("4(4+4*2*(3)*2*(6))")));
@@ -21,8 +22,15 @@ public class Main {
         //System.out.println(calculate(".01^4"));
         //System.out.println(calculate("-3"));
         //System.out.println(Double.parseDouble(""));
-        double num = -3;
-        System.out.println(-3.0+((-num)));
+//        double num = -3;
+//        System.out.println(-3.0+((-num)));
+        System.out.println(arcCosine("1","false"));
+//        System.out.println(subtract("3","4","true","true"));
+//        String[] myG = getOperandsArray("4-5+2","+");
+//        for (int i = 0; i < myG.length; i++) {
+//            System.out.println(myG[i]);
+//        }
+
 
     }
 
@@ -47,8 +55,8 @@ public class Main {
     }
 
     static String exponent(String a, String b, String isANegative, String isBNegative){
-        boolean isANeg = Boolean.getBoolean(isANegative);
-        boolean isBNeg = Boolean.getBoolean(isBNegative);
+        boolean isANeg = Boolean.valueOf(isANegative);
+        boolean isBNeg = Boolean.valueOf(isBNegative);
         double numa = Double.parseDouble(a);
         double numb = Double.parseDouble(b);
         if(isANeg){
@@ -62,8 +70,8 @@ public class Main {
     }
 
     static String multiply(String a, String b, String isANegative, String isBNegative){
-        boolean isANeg = Boolean.getBoolean(isANegative);
-        boolean isBNeg = Boolean.getBoolean(isBNegative);
+        boolean isANeg = Boolean.valueOf(isANegative);
+        boolean isBNeg = Boolean.valueOf(isBNegative);
         double numa = Double.parseDouble(a);
         double numb = Double.parseDouble(b);
         if(isANeg){
@@ -76,13 +84,15 @@ public class Main {
         return Double.toString(result);
     }
 
-    static String divide(String a, String b,boolean isANegative, boolean isBNegative){
+    static String divide(String a, String b,String isANegative, String isBNegative){
+        boolean isANeg = Boolean.valueOf(isANegative);
+        boolean isBNeg = Boolean.valueOf(isBNegative);
         double numa = Double.parseDouble(a);
         double numb = Double.parseDouble(b);
-        if(isANegative){
+        if(isANeg){
             numa = numa * -1;
         }
-        if(isBNegative){
+        if(isBNeg){
             numb = numb * -1;
         }
         double result = numa/numb;
@@ -90,8 +100,8 @@ public class Main {
     }
 
     static String add(String a, String b, String isANegative, String isBNegative){
-        boolean isANeg = Boolean.getBoolean(isANegative);
-        boolean isBNeg = Boolean.getBoolean(isBNegative);
+        boolean isANeg = Boolean.valueOf(isANegative);
+        boolean isBNeg = Boolean.valueOf(isBNegative);
         double numa = Double.parseDouble(a);
         double numb = Double.parseDouble(b);
         if(isANeg){
@@ -109,8 +119,8 @@ public class Main {
             double numb = Double.parseDouble(b);
             return Double.toString(0 - numb);
         }
-        boolean isANeg = Boolean.getBoolean(isANegative);
-        boolean isBNeg = Boolean.getBoolean(isBNegative);
+        boolean isANeg = Boolean.valueOf(isANegative);
+        boolean isBNeg = Boolean.valueOf(isBNegative);
         double numa = Double.parseDouble(a);
         double numb = Double.parseDouble(b);
         if(isANeg){
@@ -124,8 +134,8 @@ public class Main {
     }
 
     static String exp(String a,String b, String isANegative, String isBNegative){
-        boolean isANeg = Boolean.getBoolean(isANegative);
-        boolean isBNeg = Boolean.getBoolean(isBNegative);
+        boolean isANeg = Boolean.valueOf(isANegative);
+        boolean isBNeg = Boolean.valueOf(isBNegative);
         double numa = Double.parseDouble(a);
         double numb = Double.parseDouble(b);
         if(isANeg){
@@ -138,10 +148,9 @@ public class Main {
         return Double.toString(result);
     }
 
-
     static String sine(String a, String isANegative){
         double numa = Double.parseDouble(a);
-        boolean isANeg = Boolean.getBoolean(isANegative);
+        boolean isANeg = Boolean.valueOf(isANegative);
         if(isANeg){
             numa = numa * -1;
         }
@@ -152,7 +161,7 @@ public class Main {
 
     static String cosine(String a, String isANegative){
         double numa = Double.parseDouble(a);
-        boolean isANeg = Boolean.getBoolean(isANegative);
+        boolean isANeg = Boolean.valueOf(isANegative);
         if(isANeg){
             numa = numa * -1;
         }
@@ -162,7 +171,7 @@ public class Main {
 
     static String tangent(String a, String isANegative){
         double numa = Double.parseDouble(a);
-        boolean isANeg = Boolean.getBoolean(isANegative);
+        boolean isANeg = Boolean.valueOf(isANegative);
         if(isANeg){
             numa = numa * -1;
         }
@@ -172,7 +181,7 @@ public class Main {
 
     static String arcSine(String a, String isANegative){
         double numa = Double.parseDouble(a);
-        boolean isANeg = Boolean.getBoolean(isANegative);
+        boolean isANeg = Boolean.valueOf(isANegative);
         if(isANeg){
             numa = numa * -1;
         }
@@ -182,7 +191,7 @@ public class Main {
 
     static String arcCosine(String a, String isANegative){
         double numa = Double.parseDouble(a);
-        boolean isANeg = Boolean.getBoolean(isANegative);
+        boolean isANeg = Boolean.valueOf(isANegative);
         if(isANeg){
             numa = numa * -1;
         }
@@ -192,7 +201,7 @@ public class Main {
 
     static String arcTangent(String a, String isANegative){
         double numa = Double.parseDouble(a);
-        boolean isANeg = Boolean.getBoolean(isANegative);
+        boolean isANeg = Boolean.valueOf(isANegative);
         if(isANeg){
             numa = numa * -1;
         }
@@ -202,7 +211,7 @@ public class Main {
 
     static String pI(String isANegative){
         double result = 3.14159265359;
-        boolean isANeg = Boolean.getBoolean(isANegative);
+        boolean isANeg = Boolean.valueOf(isANegative);
         if(isANeg){
             result = result * -1;
         }
@@ -211,7 +220,7 @@ public class Main {
 
     static String euler(String isANegative){
         double result = 2.71828182846;
-        boolean isANeg = Boolean.getBoolean(isANegative);
+        boolean isANeg = Boolean.valueOf(isANegative);
         if(isANeg){
             result = result * -1;
         }
@@ -238,27 +247,23 @@ public class Main {
         String fact = "!";
 
         if (inputString.contains(openParentheses)){
-//            if(inputString.contains(closeParentheses)){
-//                String toReplace = "(" + flattenParenthese(inputString) + ")";
-//                String replacement = calculate(flattenParenthese(inputString));
-//                String operatedString = inputString.replace(toReplace,replacement);
-//                return calculate(operatedString);
-//            }else{
-//                String toReplace = "(" + flattenParenthese(inputString);
-//                String replacement = calculate(flattenParenthese(inputString));
-//                String operatedString = inputString.replace(toReplace,replacement);
-//                return calculate(operatedString);
-//            }
-            String toReplace = "(" + flattenParenthese(inputString) + ")";
-            String replacement = calculate(flattenParenthese(inputString));
-            String operatedString = inputString.replace(toReplace,replacement);
-            return calculate(operatedString);
+            if(inputString.contains(closeParentheses)){
+                String toReplace = "(" + flattenParenthese(inputString) + ")";
+                String replacement = calculate(flattenParenthese(inputString));
+                String operatedString = inputString.replace(toReplace,replacement);
+                return calculate(operatedString);
+            }else{
+                String toReplace = "(" + flattenParenthese(inputString);
+                String replacement = calculate(flattenParenthese(inputString));
+                String operatedString = inputString.replace(toReplace,replacement);
+                return calculate(operatedString);
+            }
         }else if(inputString.contains(exponent)){
             String[] thisCalculation = getOperandsArray(inputString,exponent);
             int start = Integer.parseInt(thisCalculation[2]);
             int end = Integer.parseInt(thisCalculation[3]);
             String toReplace = inputString.substring(start,end);
-            String replacement = exponent(thisCalculation[0],thisCalculation[1]);
+            String replacement = exponent(thisCalculation[0],thisCalculation[1],thisCalculation[4],thisCalculation[5]);
             String operatedString = inputString.replace(toReplace,replacement);
             return calculate(operatedString);
 
@@ -267,7 +272,7 @@ public class Main {
             int start = Integer.parseInt(thisCalculation[2]);
             int end = Integer.parseInt(thisCalculation[3]);
             String toReplace = inputString.substring(start,end);
-            String replacement = multiply(thisCalculation[0],thisCalculation[1]);
+            String replacement = multiply(thisCalculation[0],thisCalculation[1],thisCalculation[4],thisCalculation[5]);
             String operatedString = inputString.replace(toReplace,replacement);
             return calculate(operatedString);
 
@@ -276,7 +281,7 @@ public class Main {
             int start = Integer.parseInt(thisCalculation[2]);
             int end = Integer.parseInt(thisCalculation[3]);
             String toReplace = inputString.substring(start,end);
-            String replacement = divide(thisCalculation[0],thisCalculation[1]);
+            String replacement = divide(thisCalculation[0],thisCalculation[1],thisCalculation[4],thisCalculation[5]);
             String operatedString = inputString.replace(toReplace,replacement);
             return calculate(operatedString);
 
@@ -285,7 +290,7 @@ public class Main {
             int start = Integer.parseInt(thisCalculation[2]);
             int end = Integer.parseInt(thisCalculation[3]);
             String toReplace = inputString.substring(start,end);
-            String replacement = add(thisCalculation[0],thisCalculation[1]);
+            String replacement = add(thisCalculation[0],thisCalculation[1],thisCalculation[4],thisCalculation[5]);
             String operatedString = inputString.replace(toReplace,replacement);
             return calculate(operatedString);
         }else if(inputString.contains(subtract)){
@@ -293,11 +298,26 @@ public class Main {
             int start = Integer.parseInt(thisCalculation[2]);
             int end = Integer.parseInt(thisCalculation[3]);
             String toReplace = inputString.substring(start,end);
-            String replacement = ""//subtract(thisCalculation[0],thisCalculation[1]);
+            if(isNegNum(toReplace)){
+                return toReplace;
+            }
+            String replacement = subtract(thisCalculation[0],thisCalculation[1],thisCalculation[4],thisCalculation[5]);
             String operatedString = inputString.replace(toReplace,replacement);
             return calculate(operatedString);
         }
         return inputString;
+    }
+
+    private static boolean isNegNum(String inputString){
+        if(inputString.charAt(0) == '-'){
+            String searchForOperand = inputString.substring(1,inputString.length());
+            if(hasOperand(searchForOperand)){
+                return false;
+            }else{
+                return true;
+            }
+        }
+        return false;
     }
 
     private static String flattenParenthese(String inputString){
@@ -327,34 +347,52 @@ public class Main {
     }
 
     static String[] getOperandsArray(String inputString, String operator){
-        String[] operationArray = new String[4];
-        operationArray[2] = operator;
+        String[] operationArray = new String[6];
         int operatorIndex = inputString.indexOf(operator);
+        if(operatorIndex == 0 && operator.equals("-") && inputString.substring(operatorIndex + 1,inputString.length()).contains("-")){
+            operationArray = getOperandsArray(inputString.substring(operatorIndex + 1,inputString.length()), operator);
+            operationArray[3] = Integer.toString(Integer.parseInt(operationArray[3]) + 1);
+            operationArray[4] = Boolean.toString(true);
+            return operationArray;
+        }
         int start = 0;
         int endExclusive = 0;
         boolean isFirstNumberNegative = false;
         boolean isSecondNumberNegative = false;
+        int whereToStartSecondLoop = 1;
+        // 4-5+2
         for (int i = operatorIndex - 1; i >= 0; i--) {
             if(i == 0) {
                 start = 0;
                 break;
             }else if (hasOperand(inputString.substring(i, operatorIndex))) {
-                if(inputString.charAt(i) == '-'){
-                    if(Character.isDigit(inputString.charAt( i - 1))){
+                if(inputString.charAt(i) == '-' ){
+                    if(i == 0){
+                        isFirstNumberNegative = true;
+                        start = 1;
+                        break;
+                    }else if(Character.isDigit(inputString.charAt( i - 1))){
+                        start = i + 1;
+                        break;
                     }else{
-                        start = i;
+                        isFirstNumberNegative = true;
+                        start = i + 1;
                         break;
                     }
-                }
-                else {
+                } else {
                     start = i + 1;
                     break;
                 }
             }
         }
 
-        for (int i = operatorIndex + 1; i < inputString.length() ; i++) {
-            if(hasOperand(inputString.substring(operatorIndex + 1,i))){
+        if(inputString.charAt(operatorIndex + 1 ) == '-'){
+            isSecondNumberNegative = true;
+            whereToStartSecondLoop = 2;
+        }
+
+        for (int i = operatorIndex + whereToStartSecondLoop ; i < inputString.length() ; i++) {
+            if(hasOperand(inputString.substring(operatorIndex + whereToStartSecondLoop ,i))){
                 endExclusive = i - 1;
                 break;
             } else if( i == inputString.length() - 1){
@@ -362,13 +400,16 @@ public class Main {
             }
         }
         operationArray[0] = inputString.substring(start, operatorIndex);
-        operationArray[1] = inputString.substring(operatorIndex + 1,endExclusive);
+        operationArray[1] = inputString.substring(operatorIndex + whereToStartSecondLoop,endExclusive);
         operationArray[2] = Integer.toString(start);
         operationArray[3] = Integer.toString(endExclusive);
+        operationArray[4] = Boolean.toString(isFirstNumberNegative);
+        operationArray[5] = Boolean.toString(isSecondNumberNegative);
 
 
         return operationArray;
     }
+
 
 
 }
