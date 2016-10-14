@@ -24,7 +24,7 @@ public class Main {
         //System.out.println(Double.parseDouble(""));
 //        double num = -3;
 //        System.out.println(-3.0+((-num)));
-        System.out.println(calculate(makeNice("")));
+        System.out.println(arcCosine("1","false"));
 //        System.out.println(subtract("3","4","true","true"));
 //        String[] myG = getOperandsArray("4-5+2","+");
 //        for (int i = 0; i < myG.length; i++) {
