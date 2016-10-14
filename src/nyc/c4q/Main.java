@@ -24,9 +24,9 @@ public class Main {
         //System.out.println(Double.parseDouble(""));
 //        double num = -3;
 //        System.out.println(-3.0+((-num)));
-        System.out.println(calculate("-3--4"));
+        System.out.println(calculate(makeNice("")));
 //        System.out.println(subtract("3","4","true","true"));
-//        String[] myG = getOperandsArray("-3--4","-");
+//        String[] myG = getOperandsArray("4-5+2","+");
 //        for (int i = 0; i < myG.length; i++) {
 //            System.out.println(myG[i]);
 //        }
@@ -148,7 +148,6 @@ public class Main {
         return Double.toString(result);
     }
 
-
     static String sine(String a, String isANegative){
         double numa = Double.parseDouble(a);
         boolean isANeg = Boolean.valueOf(isANegative);
@@ -259,10 +258,6 @@ public class Main {
                 String operatedString = inputString.replace(toReplace,replacement);
                 return calculate(operatedString);
             }
-//  //          String toReplace = "(" + flattenParenthese(inputString) + ")";
-//            String replacement = calculate(flattenParenthese(inputString));
-//            String operatedString = inputString.replace(toReplace,replacement);
-//            return calculate(operatedString);
         }else if(inputString.contains(exponent)){
             String[] thisCalculation = getOperandsArray(inputString,exponent);
             int start = Integer.parseInt(thisCalculation[2]);
@@ -351,8 +346,6 @@ public class Main {
         return false;
     }
 
-    //3--4
-
     static String[] getOperandsArray(String inputString, String operator){
         String[] operationArray = new String[6];
         int operatorIndex = inputString.indexOf(operator);
@@ -367,6 +360,7 @@ public class Main {
         boolean isFirstNumberNegative = false;
         boolean isSecondNumberNegative = false;
         int whereToStartSecondLoop = 1;
+        // 4-5+2
         for (int i = operatorIndex - 1; i >= 0; i--) {
             if(i == 0) {
                 start = 0;
@@ -378,6 +372,8 @@ public class Main {
                         start = 1;
                         break;
                     }else if(Character.isDigit(inputString.charAt( i - 1))){
+                        start = i + 1;
+                        break;
                     }else{
                         isFirstNumberNegative = true;
                         start = i + 1;
