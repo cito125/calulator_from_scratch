@@ -39,7 +39,8 @@ public class Calculator {
     * exponent takes four string arguments -> a, b, isANegative, isBNegative. a and b must be parseable double strings
     * isANegative and isBNegative must be parseable boolean strings.
     * a is the number to be exponentiated and, b, is the power, a, will be raised to. isANegative and isBNegative indicate
-     * a, and/or, b being negative
+     * a, and/or, b being negative.
+     * The result is returned as a string.
      * ex. -> exponent("1","2","true","false") -> return "1.0"
     * */
 
@@ -61,8 +62,8 @@ public class Calculator {
     /**
     * multiply takes four string arguments -> a, b, isANegative, isBNegative. a and b must be parseable double strings
     * isANegative and isBNegative must be parseable boolean strings.
-    * a and b are the numbers to be multiplied. isANegative and isBNegative indicate
-     * a, and/or, b being negative
+    * a and b are the numbers to be multiplied. isANegative and isBNegative indicate a, and/or, b being negative.
+     * The result is returned as a string.
      * ex. -> multiply("1","2","true","false") -> return "-2.0"
     * */
 
@@ -84,8 +85,8 @@ public class Calculator {
     /**
     * divide takes four string arguments -> a, b, isANegative, isBNegative. a and b must be parseable double strings
     * isANegative and isBNegative must be parseable boolean strings.
-    * a is the numerator and b is the denominator. isANegative and isBNegative indicate
-     * a, and/or, b being negative
+    * a is the numerator and b is the denominator. isANegative and isBNegative indicate a, and/or, b being negative.
+     * The result is returned as a string.
      * ex. -> divide("1","2","true","false") -> return "-0.5"
     * */
 
@@ -107,8 +108,8 @@ public class Calculator {
     /**
     * add takes four string arguments -> a, b, isANegative, isBNegative. a and b must be parseable double strings
     * isANegative and isBNegative must be parseable boolean strings.
-    * a and b are the numbers to be added. isANegative and isBNegative indicate
-     * a, and/or, b being negative
+    * a and b are the numbers to be added. isANegative and isBNegative indicate a, and/or, b being negative.
+     * The result is returned as a string.
      * ex. -> add("1","2","true","false") -> return "1.0"
     * */
 
@@ -130,8 +131,8 @@ public class Calculator {
     /**
     * subtract takes four string arguments -> a, b, isANegative, isBNegative. a and b must be parseable double strings
     * isANegative and isBNegative must be parseable boolean strings.
-    * b is subtracted from a. isANegative and isBNegative indicate
-     * a, and/or, b being negative
+    * b is subtracted from a. isANegative and isBNegative indicate a, and/or, b being negative.
+     * The result is returned as a string.
      * ex. -> subtract("1","2","true","false") -> return "-3.0"
     * */
 
@@ -157,8 +158,8 @@ public class Calculator {
     /**
     * exp takes four string arguments ->a, b, isANegative, isBNegative. a and b must be parseable double strings
     * isANegative and isBNegative must be parseable boolean strings.
-    * a is the base multiplied by 10 raised to the b power. isANegative and isBNegative indicate
-     * a, and/or, b being negative
+    * a is the base multiplied by 10 raised to the b power. isANegative and isBNegative indicate a, and/or, b being
+     * negative. The result is returned as a string.
      * ex. exp("1","2","true","false") -> return "-100.0"
     * */
 
@@ -177,10 +178,45 @@ public class Calculator {
         return Double.toString(result);
     }
 
+
+    /**
+     * factorial takes one string argument -> a. a must be a parseable double string. factorial returns the factorial of
+     * a as a string. factorial will not return the correct value for negative inputs.
+     * ex. factorial("2.0") -> return "2.0"
+     *      factorial("3.1") -> return "6.8126"
+     * */
+    static String factorial(String a){
+        Double numa = Double.parseDouble(a);
+        double result = mathFact(numa);
+        return Double.toString(result);
+    }
+
+    /**
+     * mathFact takes a double argument and returns the factorial of that number as a double.mathFact will not return
+     * the correct value for negative inputs. mathFact will return the correct result for decimal numbers
+     * i.e. 1.5, 2.7, etc.
+     * mathFact returns a double.
+     * ex. mathFact(2.0) -> return 2.0
+     *     mathFact(3.1) -> return 6.8126
+     * */
+
+    static Double mathFact(Double a) {
+        if (a <= 0) {
+            if (a == Math.round(a)) {
+                return 1.0;
+
+            }else{
+                return Math.sqrt(3.14159265359);
+            }
+        }
+
+        return a * mathFact(a - 1);
+    }
+
     /**
     * sine takes two string arguments -> a, isANegative. a must be a parseable double string.
     * isANegative must be a parseable boolean string.
-    * this function returns sin(a) where a is in radians. isANegative indicates a being negative
+    * this function returns sin(a) as a string where a is in radians. isANegative indicates a being negative
      * ex. sine("0","false") -> return "0.0"
     * */
 
@@ -198,7 +234,7 @@ public class Calculator {
     /**
     * cosine takes two string arguments -> a, isANegative. a must be a parseable double string.
     * isANegative must be a parseable boolean string.
-    * this function returns cos(a) where a is in radians. isANegative indicates a being negative
+    * this function returns cos(a) as a string where a is in radians. isANegative indicates a being negative
      * ex. cos("0","false") -> return "1.0"
     * */
 
@@ -215,7 +251,7 @@ public class Calculator {
     /**
     * tangent takes two string arguments -> a, isANegative. a must be a parseable double string.
     * isANegative must be a parseable boolean string.
-    * this function returns tan(a) where a is in radians. isANegative indicates a being negative
+    * this function returns tan(a) as a string where a is in radians. isANegative indicates a being negative
      * ex. tan("0","false") -> return "0.0"
     * */
 
@@ -232,7 +268,7 @@ public class Calculator {
     /**
     * arcSine takes two string arguments -> a, isANegative. a must be a parseable double string.
     * isANegative must be a parseable boolean string.
-    * this function returns asin(a) where a is in radians. isANegative indicates a being negative
+    * this function returns asin(a) as a string where a is in radians. isANegative indicates a being negative
      * ex. arcSine("0","false") -> return "0.0"
     * */
 
@@ -249,7 +285,7 @@ public class Calculator {
     /**
     * arcCosine takes two string arguments -> a, isANegative. a must be a parseable double string.
     * isANegative must be a parseable boolean string.
-    * this function returns acos(a) where a is in radians. isANegative indicates a being negative
+    * this function returns acos(a) as a string where a is in radians. isANegative indicates a being negative
      * ex. arcCosine("1","false") -> return "0.0"
     * */
 
@@ -266,7 +302,7 @@ public class Calculator {
     /**
     * arcTangent takes two string arguments -> a, isANegative. a must be a parseable double string.
     * isANegative must be a parseable boolean string.
-    * this function returns atan(a) where a is in radians. isANegative indicates a being negative
+    * this function returns atan(a) as a string where a is in radians. isANegative indicates a being negative
      * ex. arcTangent("0","false") -> return "0.0"
     * */
 
@@ -283,34 +319,26 @@ public class Calculator {
     /**
     * pI takes two string arguments -> a, isANegative. a must be a parseable double string.
     * isANegative must be a parseable boolean string.
-    * this function returns pi approximated to 10 digits. isANegative indicates a being negative
+    * this function returns pi approximated to 10 digits as a string. isANegative indicates a being negative
      * ex. pi("false") -> return "3.14159265359"
     * */
 
-   private String pI(String isANegative){
-        double result = 3.14159265359;
-        boolean isANeg = Boolean.valueOf(isANegative);
-        if(isANeg){
-            result = result * -1;
-        }
-        return Double.toString(result);
-    }
+   private String pI(){
+       double result = 3.14159265359;
+       return Double.toString(result);
+   }
 
 
     /**
     * euler takes two string arguments -> a, isANegative. a must be a parseable double string.
     * isANegative must be a parseable boolean string.
-    * this function returns e approximated to 10 digits. isANegative indicates a being negative
+    * this function returns e approximated to 10 digits as a string. isANegative indicates a being negative
      * ex. euler("false") -> return "2.71828182846"
     * */
-   private String euler(String isANegative){
-        double result = 2.71828182846;
-        boolean isANeg = Boolean.valueOf(isANegative);
-        if(isANeg){
-            result = result * -1;
-        }
-        return Double.toString(result);
-    }
+   private String euler(){
+       double result = 2.71828182846;
+       return Double.toString(result);
+   }
 
     /**
      *Takes input string in the form of mathematical expressions and returns the result as a string.
@@ -363,25 +391,104 @@ public class Calculator {
         String e = "e";
         String exp = "E";
         String fact = "!";
-
-        if (inputString.contains(openParentheses)){
-            if(inputString.contains(closeParentheses)){
+        if (inputString.contains(pi)) {
+            String operatedString = inputString.replaceAll(pi, pI());
+            return calculate(operatedString);
+        }
+        if (inputString.contains(e)) {
+            String operatedString = inputString.replaceAll(e, euler());
+            return calculate(operatedString);
+        }
+        if (inputString.contains(openParentheses)) {
+            if (inputString.contains(closeParentheses)) {
                 String toReplace = "(" + flattenParenthese(inputString) + ")";
                 String replacement = calculate(flattenParenthese(inputString));
-                String operatedString = inputString.replace(toReplace,replacement);
+                String operatedString = inputString.replace(toReplace, replacement);
                 return calculate(operatedString);
-            }else{
+            } else {
                 String toReplace = "(" + flattenParenthese(inputString);
                 String replacement = calculate(flattenParenthese(inputString));
-                String operatedString = inputString.replace(toReplace,replacement);
+                String operatedString = inputString.replace(toReplace, replacement);
                 return calculate(operatedString);
             }
+        }else if(inputString.contains(fact)){
+            String[] thisCalculation = getFactArray(inputString);
+            int start = Integer.parseInt(thisCalculation[1]);
+            int end = Integer.parseInt(thisCalculation[2]);
+            String toReplace = inputString.substring(start,end) + "!";
+            String replacement = factorial(thisCalculation[0]);
+            String operatedString = inputString.replace(toReplace,replacement);
+            return calculate(operatedString);
+
+        }else if(inputString.contains(sin)){
+            String [] thisCalculation = getTrigOpearndArray(inputString,"n");
+            int start = Integer.parseInt(thisCalculation[1]);
+            int end = Integer.parseInt(thisCalculation[2]);
+            String toReplace = sin + inputString.substring(start,end);
+            String replacement = sine(thisCalculation[0],thisCalculation[3]);
+            String operatedString = inputString.replace(toReplace,replacement);
+            return calculate(operatedString);
+
+        }else if(inputString.contains(cos)){
+            String [] thisCalculation = getTrigOpearndArray(inputString,"n");
+            int start = Integer.parseInt(thisCalculation[1]);
+            int end = Integer.parseInt(thisCalculation[2]);
+            String toReplace = cos + inputString.substring(start,end);
+            String replacement = cosine(thisCalculation[0],thisCalculation[3]);
+            String operatedString = inputString.replace(toReplace,replacement);
+            return calculate(operatedString);
+
+        }else if(inputString.contains(tan)){
+            String [] thisCalculation = getTrigOpearndArray(inputString,"n");
+            int start = Integer.parseInt(thisCalculation[1]);
+            int end = Integer.parseInt(thisCalculation[2]);
+            String toReplace = tan + inputString.substring(start,end);
+            String replacement = tangent(thisCalculation[0],thisCalculation[3]);
+            String operatedString = inputString.replace(toReplace,replacement);
+            return calculate(operatedString);
+
+        }else if(inputString.contains(arcSin)){
+            String [] thisCalculation = getTrigOpearndArray(inputString,"n");
+            int start = Integer.parseInt(thisCalculation[1]);
+            int end = Integer.parseInt(thisCalculation[2]);
+            String toReplace = arcSin + inputString.substring(start,end);
+            String replacement = arcSine(thisCalculation[0],thisCalculation[3]);
+            String operatedString = inputString.replace(toReplace,replacement);
+            return calculate(operatedString);
+
+        }else if(inputString.contains(arcCos)){
+            String [] thisCalculation = getTrigOpearndArray(inputString,"n");
+            int start = Integer.parseInt(thisCalculation[1]);
+            int end = Integer.parseInt(thisCalculation[2]);
+            String toReplace = arcCos + inputString.substring(start,end);
+            String replacement = arcCosine(thisCalculation[0],thisCalculation[3]);
+            String operatedString = inputString.replace(toReplace,replacement);
+            return calculate(operatedString);
+
+        }else if(inputString.contains(arcTan)){
+            String [] thisCalculation = getTrigOpearndArray(inputString,"n");
+            int start = Integer.parseInt(thisCalculation[1]);
+            int end = Integer.parseInt(thisCalculation[2]);
+            String toReplace = arcTan + inputString.substring(start,end);
+            String replacement = arcTangent(thisCalculation[0],thisCalculation[3]);
+            String operatedString = inputString.replace(toReplace,replacement);
+            return calculate(operatedString);
+
         }else if(inputString.contains(exponent)){
             String[] thisCalculation = getOperandsArray(inputString,exponent);
             int start = Integer.parseInt(thisCalculation[2]);
             int end = Integer.parseInt(thisCalculation[3]);
             String toReplace = inputString.substring(start,end);
             String replacement = exponent(thisCalculation[0],thisCalculation[1],thisCalculation[4],thisCalculation[5]);
+            String operatedString = inputString.replace(toReplace,replacement);
+            return calculate(operatedString);
+
+        }else if(inputString.contains(exp)){
+            String[] thisCalculation = getOperandsArray(inputString,exp);
+            int start = Integer.parseInt(thisCalculation[2]);
+            int end = Integer.parseInt(thisCalculation[3]);
+            String toReplace = inputString.substring(start,end);
+            String replacement = exp(thisCalculation[0],thisCalculation[1],thisCalculation[4],thisCalculation[5]);
             String operatedString = inputString.replace(toReplace,replacement);
             return calculate(operatedString);
 
@@ -480,8 +587,99 @@ public class Calculator {
 
 
     /**
-     * hasOperand takes a string and returns true if the inputString contains any PEMDAS operands. Otherwise, returns
-     * false.
+     * hasTrigOperand takes a string and returns true if the inputString contains any first or last letters of trig
+     * functions. Otherwise, returns false.
+     * ex. hasOperand("2-3") -> return false
+     *      hasOperand("n2") ->return false
+     *      hasOperand("2s") -> return true
+     * */
+
+    boolean hasTrigOperand(String substring){
+        if( substring.contains("n") || substring.contains("a") ||substring.contains("s") || substring.contains("c")
+                || substring.contains("t")){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     *getFactArray takes in a string. The inputString is parsed for the index of the factorial symbol "!".
+     * getFactArray then returns a string array of length 3 with:
+     * - The first element containing the operand to the left of the factorial
+     * - The second and third elements corresponding to the start and end index, respectively, of the inputString
+     *   substring that contains the operand.
+     *
+     * ex. getFactArray("124!") -> return {"124", "0", "3"}
+     *     getFactArray("3*42!") -> return {"42", "2", "4"}
+     * */
+
+    private String[] getFactArray(String inputString){
+        String[] operationArray = new String[3];
+        int end = inputString.indexOf("!");
+        int start = 0;
+        for (int i = end; i > 0 ; i--) {
+            if(hasOperand(inputString.substring(i ,end))
+                    || hasTrigOperand(inputString.substring(i ,end))
+                    ){
+                start = i +1;
+                break;
+            }
+
+        }
+        operationArray[0] = inputString.substring(start,end);
+        operationArray[1] = Integer.toString(start);
+        operationArray[2] = Integer.toString(end);
+
+        return operationArray;
+    }
+
+    /**
+     *getTrigOpearndArray takes in a string. The inputString is parsed for the index of the factorial symbol "n".
+     * getTrigOpearndArray then returns a string array of length 4 with:
+     * - The first element containing the operand to the left of the factorial
+     * - The second and third elements corresponding to the start and end index, respectively, of the inputString
+     *   substring that contains the operand.
+     * - The fourth element indicating if the operand is a negative number.
+     *
+     * ex. getTrigOperandArray("sin2") -> return {"2", "3", "4","false"}
+     *     getTrigOperandArray("sin-32") -> return {"32", "4", "6", "true"}
+     * */
+
+    private String[] getTrigOpearndArray(String inputString, String operator){
+        String[] operationArray = new String[4];
+        int operatorIndex = inputString.indexOf(operator);
+        boolean isNumberNegative = false;
+        int whereToStartSecondLoop = 1;
+        if(inputString.charAt(operatorIndex + 1) == '-'){
+            isNumberNegative = true;
+            whereToStartSecondLoop = 2;
+        }
+
+        int start = operatorIndex + whereToStartSecondLoop;
+        int endExclusive = 0;
+
+        for (int i = operatorIndex + whereToStartSecondLoop ; i < inputString.length() ; i++) {
+            if(hasOperand(inputString.substring(operatorIndex + whereToStartSecondLoop ,i))
+                    || hasTrigOperand(inputString.substring(operatorIndex + whereToStartSecondLoop ,i))
+                    ){
+                endExclusive = i - 1;
+                break;
+            } else if( i == inputString.length() - 1){
+                endExclusive = inputString.length();
+            }
+        }
+        operationArray[0] = inputString.substring(start, endExclusive);
+        operationArray[1] = Integer.toString(operatorIndex + 1);
+        operationArray[2] = Integer.toString(endExclusive);
+        operationArray[3] = Boolean.toString(isNumberNegative);
+
+
+        return operationArray;
+    }
+
+    /**
+     * hasOperand takes a string and returns true if the inputString contains any PEMDAS operands.
+     * Otherwise, returns false.
      *
      * ex. hasOperand("2-3") -> return true
      *      hasOperand("2") ->return false
@@ -497,12 +695,12 @@ public class Calculator {
     }
 
     /**
-     * getOperandsArray take in two strings. the inputString is parsed for the index of the passed in operator string.
+     * getOperandsArray take in two strings. The inputString is parsed for the index of the passed in operator string.
      * getOperands then returns a string array of length six with:
      * - The first element containing the operand to the left of the operator in the input string
      * - The second element containing the operand to the right of the operator in the input string
-     * - The second and third elements correspond to the start and end index of the inputString substring that contains
-     *   the operator and operands.
+     * - The second and third elements correspond to the start and end index, respectively, of the inputString substring
+     * that contains the operator and operands.
      * - The fourth and fifth element hold strings indicating if the the first and second operands are negative numbers,
      *   respectively,
      *  ex. getOperandsArray("2-3","-") -> return {"2","3","0","3","false","false"}
