@@ -641,6 +641,23 @@ public class Calculator {
         return inputString.substring(start, end);
     }
 
+    /**
+     * hasOperand takes a string and returns true if the inputString contains any PEMDAS operands.
+     * Otherwise, returns false.
+     *
+     * ex. hasOperand("2-3") -> return true
+     *      hasOperand("2") ->return false
+     *      hasOperand("-2") -> return true
+     * */
+
+    private boolean hasOperand(String substring){
+        if(substring.contains("^") || substring.contains("*") || substring.contains("/") || substring.contains("+")
+                || substring.contains("-")){
+            return true;
+        }
+        return false;
+    }
+
 
     /**
      * hasTrigOperand takes a string and returns true if the inputString contains any first or last letters of trig,
@@ -652,7 +669,7 @@ public class Calculator {
 
     boolean hasTrigOperand(String substring){
         if( substring.contains("n") || substring.contains("a") ||substring.contains("s") || substring.contains("c")
-                || substring.contains("t") || substring.contains("g")){
+                || substring.contains("t") || substring.contains("g") || substring.contains("l")){
             return true;
         }
         return false;
@@ -733,22 +750,6 @@ public class Calculator {
         return operationArray;
     }
 
-    /**
-     * hasOperand takes a string and returns true if the inputString contains any PEMDAS operands.
-     * Otherwise, returns false.
-     *
-     * ex. hasOperand("2-3") -> return true
-     *      hasOperand("2") ->return false
-     *      hasOperand("-2") -> return true
-     * */
-
-    private boolean hasOperand(String substring){
-        if(substring.contains("^") || substring.contains("*") || substring.contains("/") || substring.contains("+")
-                || substring.contains("-")){
-            return true;
-        }
-        return false;
-    }
 
     /**
      * getOperandsArray take in two strings. The inputString is parsed for the index of the passed in operator string.
