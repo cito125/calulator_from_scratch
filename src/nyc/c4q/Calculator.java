@@ -36,6 +36,42 @@ public class Calculator {
     }
 
     /**
+     * naturalLog takes two string arguments -> a, isANegative. a must be a parseable double string.
+     * isANegative must be a parseable boolean string.
+     * this function returns ln(a) as a string. isANegative indicates a being negative
+     * ex. naturalLog("1","false") -> return "0.0"
+     * */
+
+    private String naturalLog(String a, String isANegative){
+        double numa = Double.parseDouble(a);
+        boolean isANeg = Boolean.valueOf(isANegative);
+        if(isANeg){
+            numa = numa * -1;
+        }
+
+        double result = Math.log1p(numa);
+        return Double.toString(result);
+    }
+
+    /**
+     * log takes two string arguments -> a, isANegative. a must be a parseable double string.
+     * isANegative must be a parseable boolean string.
+     * this function returns log(a) as a string. isANegative indicates a being negative
+     * ex. log("1","false") -> return "0.0"
+     * */
+
+    private String log(String a, String isANegative){
+        double numa = Double.parseDouble(a);
+        boolean isANeg = Boolean.valueOf(isANegative);
+        if(isANeg){
+            numa = numa * -1;
+        }
+
+        double result = Math.log10(numa);
+        return Double.toString(result);
+    }
+
+    /**
     * exponent takes four string arguments -> a, b, isANegative, isBNegative. a and b must be parseable double strings
     * isANegative and isBNegative must be parseable boolean strings.
     * a is the number to be exponentiated and, b, is the power, a, will be raised to. isANegative and isBNegative indicate
@@ -391,6 +427,8 @@ public class Calculator {
         String e = "e";
         String exp = "E";
         String fact = "!";
+        String natLog = "ln";
+        String log = "log";
         if (inputString.contains(pi)) {
             String operatedString = inputString.replaceAll(pi, pI());
             return calculate(operatedString);
@@ -417,6 +455,24 @@ public class Calculator {
             int end = Integer.parseInt(thisCalculation[2]);
             String toReplace = inputString.substring(start,end) + "!";
             String replacement = factorial(thisCalculation[0]);
+            String operatedString = inputString.replace(toReplace,replacement);
+            return calculate(operatedString);
+
+        }else if(inputString.contains(natLog)){
+            String [] thisCalculation = getTrigOpearndArray(inputString,"n");
+            int start = Integer.parseInt(thisCalculation[1]);
+            int end = Integer.parseInt(thisCalculation[2]);
+            String toReplace = natLog + inputString.substring(start,end);
+            String replacement = naturalLog(thisCalculation[0],thisCalculation[3]);
+            String operatedString = inputString.replace(toReplace,replacement);
+            return calculate(operatedString);
+
+        }else if(inputString.contains(log)){
+            String [] thisCalculation = getTrigOpearndArray(inputString,"g");
+            int start = Integer.parseInt(thisCalculation[1]);
+            int end = Integer.parseInt(thisCalculation[2]);
+            String toReplace = log + inputString.substring(start,end);
+            String replacement = log(thisCalculation[0],thisCalculation[3]);
             String operatedString = inputString.replace(toReplace,replacement);
             return calculate(operatedString);
 
@@ -587,8 +643,8 @@ public class Calculator {
 
 
     /**
-     * hasTrigOperand takes a string and returns true if the inputString contains any first or last letters of trig
-     * functions. Otherwise, returns false.
+     * hasTrigOperand takes a string and returns true if the inputString contains any first or last letters of trig,
+     * log, or ln functions. Otherwise, returns false.
      * ex. hasOperand("2-3") -> return false
      *      hasOperand("n2") ->return false
      *      hasOperand("2s") -> return true
@@ -596,7 +652,7 @@ public class Calculator {
 
     boolean hasTrigOperand(String substring){
         if( substring.contains("n") || substring.contains("a") ||substring.contains("s") || substring.contains("c")
-                || substring.contains("t")){
+                || substring.contains("t") || substring.contains("g")){
             return true;
         }
         return false;
