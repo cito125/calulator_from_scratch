@@ -1,13 +1,5 @@
 package nyc.c4q;
 
-import sun.jvm.hotspot.oops.Array;
-import sun.jvm.hotspot.types.basic.BasicNarrowOopField;
-
-import java.math.BigDecimal;
-import java.util.*;
-import java.util.function.DoubleBinaryOperator;
-import java.util.regex.Matcher;
-
 public class Main {
 
 

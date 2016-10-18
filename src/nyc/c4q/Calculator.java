@@ -1,9 +1,5 @@
 package nyc.c4q;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
-import java.util.StringJoiner;
 
 /**
  * Created by andresarango on 10/8/16.
