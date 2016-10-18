@@ -636,7 +636,6 @@ public class Calculator {
                     break;
                 }
             }
-
         }
         return inputString.substring(start, end);
     }
@@ -707,7 +706,8 @@ public class Calculator {
     }
 
     /**
-     *getTrigOpearndArray takes in a string. The inputString is parsed for the index of the factorial symbol "n".
+     *getTrigOpearndArray takes in a string. The inputString is parsed for the index of the factorial symbol "n", "s",
+     * or the last letter of any function in the string.
      * getTrigOpearndArray then returns a string array of length 4 with:
      * - The first element containing the operand to the left of the factorial
      * - The second and third elements corresponding to the start and end index, respectively, of the inputString
